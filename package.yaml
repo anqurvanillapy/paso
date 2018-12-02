@@ -1,0 +1,43 @@
+name:                ttt
+version:             0.1.0.0
+github:              "anqurvanillapy/ttt"
+license:             MIT
+author:              "AnqurVanillapy"
+maintainer:          "anqurvanillapy@gmail.com"
+copyright:           "2018 AnqurVanillapy"
+
+extra-source-files:
+- README.md
+
+synopsis:            A functional programming language of a tiny type theory
+category:            Language
+
+description:         A functional programming language of a tiny type theory
+
+dependencies:
+- base >= 4.8 && < 5
+
+library:
+  source-dirs: src
+
+executables:
+  tttc:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - ttt
+
+tests:
+  ttt-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - ttt

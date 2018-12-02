@@ -1,0 +1,19 @@
+(* This is a comment *)
+
+(* Context *)
+context Basic.
+
+(* Definition of inductive types.  This creates data constructors and implicitly
+   its eliminators for pattern matching *)
+Nat : Type = zero : Nat
+           + succ : Nat -> Nat.
+
+(* Identity types: Shulman approach *)
+id {A : Type k} : A -> A -> Type
+  = refl : forall{x} id x x.
+
+(* Or, use a Paulin-Mohring approach *)
+(*
+id {A : Type k} (x : A) : A -> Type
+  = refl : id x x.
+*)
