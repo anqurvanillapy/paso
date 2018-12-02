@@ -8,12 +8,24 @@ context Basic.
 Nat : Type = zero : Nat
            + succ : Nat -> Nat.
 
-(* Identity types: Shulman approach *)
-id {A : Type k} : A -> A -> Type
+(* Identity types: Paulin-Mohring approach *)
+`==` {k} {A : Type k} (x : A) : A -> Type
+  = refl : id x x.
+
+1 : Nat;
+1 = succ zero.
+
+_ : 1 `==` (succ zero);
+_ = refl.
+
+(* Or, Licata approach *)
+(*
+id {k} {A : Type k} : A -> A -> Type
   = refl : forall{x} id x x.
 
-(* Or, use a Paulin-Mohring approach *)
-(*
-id {A : Type k} (x : A) : A -> Type
-  = refl : id x x.
+1 : Nat;
+1 = succ zero.
+
+_ : id 1;
+_ = refl (succ zero).
 *)

@@ -21,7 +21,7 @@ library:
   source-dirs: src
 
 executables:
-  tttc:
+  ttti:
     main:                Main.hs
     source-dirs:         app
     ghc-options:
