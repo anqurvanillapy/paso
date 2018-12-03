@@ -5,27 +5,27 @@ context Basic.
 
 (* Definition of inductive types.  This creates data constructors and implicitly
    its eliminators for pattern matching *)
-Nat : Type = zero : Nat
-           + succ : Nat -> Nat.
+data Nat : Type = zero : Nat
+                + succ : Nat -> Nat.
 
 (* Identity types: Paulin-Mohring approach *)
-`==` {k} {A : Type k} (x : A) : A -> Type
+data `==` {k} {A : Type k} (x : A) : A -> Type
   = refl : id x x.
 
-1 : Nat;
+1 : Nat,
 1 = succ zero.
 
-_ : 1 `==` (succ zero);
+_ : 1 `==` (succ zero),
 _ = refl.
 
 (* Or, Licata approach *)
 (*
-id {k} {A : Type k} : A -> A -> Type
+data id {k} {A : Type k} : A -> A -> Type
   = refl : forall{x} id x x.
 
-1 : Nat;
+1 : Nat,
 1 = succ zero.
 
-_ : id 1;
+_ : id 1,
 _ = refl (succ zero).
 *)
