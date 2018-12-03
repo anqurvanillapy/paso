@@ -9,10 +9,10 @@ copyright:           "2018 AnqurVanillapy"
 extra-source-files:
 - README.md
 
-synopsis:            A functional programming language of a tiny type theory
+synopsis:            A dependently-typed programming language
 category:            Language
 
-description:         A functional programming language of a tiny type theory
+description:         A dependently-typed programming language
 
 dependencies:
 - base >= 4.8 && < 5
