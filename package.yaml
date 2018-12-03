@@ -1,6 +1,6 @@
-name:                ttt
+name:                paso
 version:             0.1.0.0
-github:              "anqurvanillapy/ttt"
+github:              "anqurvanillapy/paso"
 license:             MIT
 author:              "AnqurVanillapy"
 maintainer:          "anqurvanillapy@gmail.com"
@@ -21,7 +21,7 @@ library:
   source-dirs: src
 
 executables:
-  ttti:
+  paso:
     main:                Main.hs
     source-dirs:         app
     ghc-options:
@@ -29,10 +29,10 @@ executables:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - ttt
+    - paso
 
 tests:
-  ttt-test:
+  paso-test:
     main:                Spec.hs
     source-dirs:         test
     ghc-options:
@@ -40,4 +40,4 @@ tests:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - ttt
+    - paso

@@ -1,4 +1,4 @@
-module Ttt.Lexer
+module Paso.Lexer
     ( someFunc
     ) where
 

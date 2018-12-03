@@ -1,6 +1,6 @@
 {-# LANGUAGE LambdaCase #-}
 
-module Ttt.Parsec where
+module Paso.Parsec where
 
 newtype Parser a = Parser
   { parse :: String -> [(a, String)]
