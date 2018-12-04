@@ -10,6 +10,8 @@ module Paso.Parsec
   , manyTill
   , char
   , anyChar
+  , alphaChar
+  , alphaNumChar
   , string
   , token
   , reserved
@@ -86,7 +88,7 @@ satisfy f = item `bind` \c ->
 
 {- Combinators -}
 
-oneOf :: [Char] -> Parser Char
+oneOf :: String -> Parser Char
 oneOf s = satisfy (flip elem s)
 
 chainl :: Parser a -> Parser (a -> a -> a) -> a -> Parser a
@@ -111,6 +113,12 @@ char c = satisfy (c ==)
 
 anyChar :: Parser Char
 anyChar = satisfy (const True)
+
+alphaChar :: Parser Char
+alphaChar = satisfy isAlpha
+
+alphaNumChar :: Parser Char
+alphaNumChar = satisfy isAlphaNum
 
 string :: String -> Parser String
 string []     = return []

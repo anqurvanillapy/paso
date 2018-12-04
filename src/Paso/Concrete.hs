@@ -1,27 +1,31 @@
 module Paso.Concrete where
 
+import           Control.Applicative
+import           Data.Char
+
 import           Paso.Parsec
-import           Paso.Position
+
+reservedWords :: [String]
+reservedWords =
+  [ "context"
+  , "postulate"
+  , "Type"
+  , "data"
+  , "codata"
+  ]
+
+identifier :: Parser String
+identifier = do
+  s <- many alphaChar
+  cs <- many . satisfy $ \c -> isAlphaNum c || c == '\''
+  return $ checked (s ++ cs)
+  where
+    checked x = if x `elem` reservedWords
+                then error $ "invalid identifier `" ++ x ++ "'"
+                else x
+
+type Name = String
 
 data Expr
-  = Lit String
-  deriving Show
-
-type RawName = String
-
-type TypeSig = Expr
-
-data Induction
-  = Data
-  | Codata
-  deriving Show
-
-data Decl
-  = Context   SrcInfo RawName
-  | DataType  SrcInfo Induction TypeSig Expr
-  | Postulate SrcInfo [Decl]
-  deriving Show
-
-data Top
-  = Decl SrcInfo Top
-  | EOF SrcInfo
+  = App Expr Expr
+  | Term Name
