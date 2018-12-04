@@ -1,17 +1,10 @@
 module Paso.Concrete where
 
 import           Paso.Parsec
+import           Paso.Position
 
 data Expr
   = Lit String
-  deriving Show
-
-data SrcInfo = SrcInfo
-  { srcFile :: FilePath
-  , pos     :: Int
-  , line    :: Int
-  , col     :: Int
-  }
   deriving Show
 
 type RawName = String
@@ -29,4 +22,6 @@ data Decl
   | Postulate SrcInfo [Decl]
   deriving Show
 
-type Top = [Decl]
+data Top
+  = Decl SrcInfo Top
+  | EOF SrcInfo

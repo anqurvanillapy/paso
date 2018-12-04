@@ -7,7 +7,9 @@ module Paso.Parsec
   , oneOf
   , chainl
   , chainl1
+  , manyTill
   , char
+  , anyChar
   , string
   , token
   , reserved
