@@ -3,6 +3,10 @@
 (* Context *)
 context Basic.
 
+(* Postulation *)
+postulate A : Type,
+          B : Type.
+
 (* Definition of inductive types.  This creates data constructors and implicitly
    its eliminators for pattern matching *)
 data Nat : Type = zero : Nat
