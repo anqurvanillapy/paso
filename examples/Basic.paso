@@ -1,35 +1,20 @@
 (* This is a comment *)
 
-(* Context *)
-context Basic.
+(* A generic identity function *)
+let id : forall (C : Type) C -> C
+  , id A x = x.
 
-(* Postulation *)
-postulate A : Type,
-          B : Type.
+(* Boolean *)
+let Bool : Type
+  , Bool = { true | false }.
 
-(* Definition of inductive types.  This creates data constructors and implicitly
-   its eliminators for pattern matching *)
-data Nat : Type = zero : Nat
-                + succ : Nat -> Nat.
+(* Eliminator for booleans *)
+let elimBool : forall (C : Type -> Bool) C true -> C false
+    -> forall (b : Bool) C b
+  , elimBool F f0 f1 = ( true  -> f0
+                       | false -> f1
+                       ).
 
-(* Identity types: Paulin-Mohring approach *)
-data `==` {k} {A : Type k} (x : A) : A -> Type
-  = refl : id x x.
-
-1 : Nat,
-1 = succ zero.
-
-_ : 1 `==` (succ zero),
-_ = refl.
-
-(* Or, Licata approach *)
-(*
-data id {k} {A : Type k} : A -> A -> Type
-  = refl : forall{x} id x x.
-
-1 : Nat,
-1 = succ zero.
-
-_ : id 1,
-_ = refl (succ zero).
-*)
+(* Natural numbers as recursive types *)
+letrc Nat : Type
+    , Nat = { zero | succ Nat }.
